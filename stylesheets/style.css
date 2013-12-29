@@ -102,7 +102,7 @@ div, a, p, img, blockquote, form, fieldset, textarea, input, label, iframe, code
 }
 
 #content{
-	top:64px; 
+	top:30px; 
 	left:0; 
 	bottom:0px; 
 	position:absolute; 

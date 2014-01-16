@@ -19,41 +19,57 @@
 	controller();
 
 	function checkLogin(form) {
-		if (form.p_artistemail.value == "" && form.P_artistpassword.value == "") {
-			document.getElementById('validpassword').style.display = 'block';
-			document.getElementById('validemail').style.display = 'block';
-			document.getElementById('incorrect').style.display = 'none';
-			form.p_artistemail.focus();
-			return false;
-		}
-		var pattern = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
-		if (!pattern.test(form.p_artistemail.value)) {
-			document.getElementById('validpassword').style.display = 'none';
-			document.getElementById('validemail').style.display = 'block';
-			document.getElementById('incorrect').style.display = 'none';
-			form.p_artistemail.focus();
-			return false;
-		}
+	
+		var checkValue = true;
+		
 		if (form.P_artistpassword.value == "") {
 			document.getElementById('validpassword').style.display = 'block';
-			document.getElementById('validemail').style.display = 'none';
 			document.getElementById('incorrect').style.display = 'none';
 			form.P_artistpassword.focus();
+			checkValue = false;
+		}
+		
+		if (form.P_artistphone.value == "" || isNaN(form.P_artistphone.value)) {
+			document.getElementById('validphone').style.display = 'block';
+			document.getElementById('incorrect').style.display = 'none';
+			form.P_artistphone.focus();
+			checkValue = false;
+		}
+		
+		var pattern = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+		if (!pattern.test(form.P_artistemail.value)) {
+			document.getElementById('validemail').style.display = 'block';
+			document.getElementById('incorrect').style.display = 'none';
+			form.P_artistemail.focus();
+			checkValue = false;
+		}
+		if (form.P_artistname.value == "") {
+			document.getElementById('validname').style.display = 'block';
+			document.getElementById('incorrect').style.display = 'none';
+			form.P_artistname.focus();
+			checkValue = false;
+		}
+		
+		
+		if (checkValue == false)
+		{
 			return false;
 		}
 		
-		var url = "http://artistivity.com/new/mobile/loginCheck.php";
+		var url = "http://artistivity.com/new/mobile/register.php";
 		
 		$.ajax({
-					type : 'GET',
+					type : 'POST',
 					async: false,
 					url : url,
 					contentType : "application/json",
 					dataType : 'jsonp',
 					crossDomain : true,
 					data : {
-						p_artistemail : form.p_artistemail.value,
-						P_artistpassword : form.P_artistpassword.value
+						artistname : form.P_artistname.value,
+						artistemail : form.P_artistemail.value,
+						artistphone : form.P_artistphone.value,
+						artistpassword : form.P_artistpassword.value
 					},
 					beforeSend : function(xhr) {
 						//show your image loader here
@@ -62,8 +78,7 @@
 					success : function(data) {
 						if (data.success == "true") {
 							//document.write(data.success);
-							window.localStorage.setItem("artistivity_cookie",
-									data.cookie);
+							window.localStorage.setItem("artistivity_cookie", data.cookie);
 							window.location.href = "dashboardFrame.html";
 							return true;
 						} else {
@@ -130,26 +145,23 @@
 				<img src="images/artistivity-big-logo.png" width="100%" alt="">
 				<div class="loginBox clear-fix">
 					<div class="arrow"></div>
-					<form action="dashboardFrame.html" name="login" method="post" id=""
-						onsubmit="return checkLogin(this);">
-						<div class="error" id="incorrect"
-							style="display: none; color: red;">Please try again.</div>
-						<input name="p_artistemail" type="email" placeholder="Email"
-							class="blackInput">
-						<div class="error" id="validemail"
-							style="display: none; color: red;">Please enter valid
-							Email-ID.</div>
-						<input name="P_artistpassword" type="password"
-							placeholder="Password" class="blackInput mTop15">
-						<div class="error" id="validpassword"
-							style="display: none; color: red;">Please enter your
-							Password.</div>
-						<button type="submit" name="" value="" class="redBtn mTop15">SIGN
-							IN</button>
-
-						<div class="clear-fix mTop10">
-							<a href="#" class="blackLink">forgot your password?</a>
-						</div>
+					<form action="dashboardFrame.html" name="login" method="post" id="" onsubmit="return checkLogin(this);">
+						<div class="error" id="incorrect" style="display: none; color: red;">Please try again.</div>
+						
+						<input name="P_artistname" type="name" placeholder="Full Name" class="blackInput">
+						<div class="error" id="validname" style="display: none; color: red;">Please enter valid name.</div>
+						
+						<input name="P_artistemail" type="email" placeholder="Email" class="blackInput mTop15">
+						<div class="error" id="validemail" style="display: none; color: red;">Please enter valid Email-ID.</div>
+						
+						<input name="P_artistphone" type="number" placeholder="Phone Number" class="blackInput mTop15">
+						<div class="error" id="validphone" style="display: none; color: red;">Please enter valid phone number.</div>
+						
+						<input name="P_artistpassword" type="password" placeholder="Password" class="blackInput mTop15">
+						<div class="error" id="validpassword" style="display: none; color: red;">Please enter a password.</div>
+						
+						<button type="submit" name="" value="" class="redBtn mTop15">SIGN UP</button>
+						
 					</form>
 				</div>
 				<div id="fbBtn">
@@ -157,7 +169,7 @@
 				</div>
 
 				<div class="baseLink">
-					Not yet registered? <a href="register.html" class="white-link">Join Now</a>
+					Already registered? <a href="index.html" class="white-link">Sign In</a>
 				</div>
 				<div class="clear-fix"></div>
 			</div>

@@ -541,6 +541,9 @@ input, textarea, select{
 .rField.columns .pure-u-1-2{width:49%; display:inline-block}
 .rField.columns .pure-u-1-3{width:32.3555%; display:inline-block}
 
+.black-text{
+	color:#000000;
+}
 
 #bookingRqst input{width:70%}
 #bookingRqst textarea{width:100%}

@@ -10,8 +10,9 @@
 <title>Artistivity</title>
 <link href="stylesheets/pure-min.css" rel="stylesheet" type="text/css">
 <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<div id="results"></div>
+				
+<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="scripts/jquery.touchSwipe.min.js"></script>
 <script type="text/javascript" src="scripts/main.js"></script>
@@ -56,7 +57,7 @@
 			return false;
 		}
 		
-		var url = "http://artistivity.com/new/mobile/register.php";
+		var url = "http://artistivity.com/new/mobile/registration.php";
 		
 		$.ajax({
 					type : 'POST',
@@ -66,6 +67,7 @@
 					dataType : 'jsonp',
 					crossDomain : true,
 					data : {
+						register : form.register.value,
 						artistname : form.P_artistname.value,
 						artistemail : form.P_artistemail.value,
 						artistphone : form.P_artistphone.value,
@@ -83,8 +85,7 @@
 							return true;
 						} else {
 							//document.write(data.success);
-							document.getElementById('validpassword').style.display = 'none';
-							document.getElementById('validemail').style.display = 'none';
+							alert(data);
 							document.getElementById('incorrect').style.display = 'block';
 							form.p_artistemail.focus();
 							return false;
@@ -101,7 +102,6 @@
 	function checkLocal() {
 		if (window.localStorage["artistivity_cookie"] != undefined) {
 			cookie = window.localStorage["artistivity_cookie"];
-
 			return true;
 		}
 		return false;
@@ -122,10 +122,12 @@
 				},
 				beforeSend : function(xhr) {
 				},
+				
 				success : function(res) {
 					if (res.value) {
 						window.location("index.html");
 					} else {
+						alert("error");
 					}
 				}
 			});
@@ -148,16 +150,18 @@
 					<form action="dashboardFrame.html" name="login" method="post" id="" onsubmit="return checkLogin(this);">
 						<div class="error" id="incorrect" style="display: none; color: red;">Please try again.</div>
 						
-						<input name="P_artistname" type="name" placeholder="Full Name" class="blackInput">
+						<input type="hidden" name="register" value="true"/>
+						
+						<input name="P_artistname" type="name" placeholder="Full Name" class="blackInput" value="Sample Name">
 						<div class="error" id="validname" style="display: none; color: red;">Please enter valid name.</div>
 						
-						<input name="P_artistemail" type="email" placeholder="Email" class="blackInput mTop15">
+						<input name="P_artistemail" type="email" placeholder="Email" class="blackInput mTop15" value="sample@email.com">
 						<div class="error" id="validemail" style="display: none; color: red;">Please enter valid Email-ID.</div>
 						
-						<input name="P_artistphone" type="number" placeholder="Phone Number" class="blackInput mTop15">
+						<input name="P_artistphone" type="number" placeholder="Phone Number" class="blackInput mTop15" value="12331312312">
 						<div class="error" id="validphone" style="display: none; color: red;">Please enter valid phone number.</div>
 						
-						<input name="P_artistpassword" type="password" placeholder="Password" class="blackInput mTop15">
+						<input name="P_artistpassword" type="password" placeholder="Password" class="blackInput mTop15" value="adasdasd">
 						<div class="error" id="validpassword" style="display: none; color: red;">Please enter a password.</div>
 						
 						<button type="submit" name="" value="" class="redBtn mTop15">SIGN UP</button>

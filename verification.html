@@ -55,11 +55,13 @@
 						if (data.success == "true") {
 							//document.write(data.success);
 							window.localStorage.setItem("artistivity_cookie", data.cookie);
+							console.log(data);
 							window.location.href = "dashboardFrame.html";
 							return true;
 						} else {
 							//document.write(data.success);
 							//alert (data);
+							console.log(data);
 							document.getElementById('validver').style.display = 'none';
 							document.getElementById('incorrect').style.display = 'block';
 							form.P_artistver.focus();
@@ -81,8 +83,7 @@
 				<img src="images/artistivity-big-logo.png" width="100%" alt="">
 				<div class="loginBox clear-fix">
 					<div class="arrow"></div>
-					<form action="dashboardFrame.html" name="login" method="post" id=""
-						onsubmit="return checkVer(this);">
+					<form action="dashboardFrame.html" name="login" method="post" id="" onsubmit="return checkVer(this);">
 						<div class="error" id="incorrect"
 							style="display: none; color: red;">Please try again.</div>
 						

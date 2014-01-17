@@ -17,7 +17,7 @@
 <script type="text/javascript" src="scripts/jquery.touchSwipe.min.js"></script>
 <script type="text/javascript" src="scripts/main.js"></script>
 <script>
-	controller();
+	//controller();
 
 	function checkLogin(form) {
 	
@@ -78,17 +78,20 @@
 
 					},
 					success : function(data) {
-						if (data.success == "true") {
+						if (data.success != "true") {
 							//document.write(data.success);
-							window.localStorage.setItem("artistivity_cookie", data.cookie);
-							window.location.href = "dashboardFrame.html";
-							return true;
+							//alert(data);
+							document.getElementById('incorrect').style.display = 'block';
+							//form.p_artistemail.focus();
+							//console.log(data);
+							return false;
+							
 						} else {
 							//document.write(data.success);
-							alert(data);
-							document.getElementById('incorrect').style.display = 'block';
-							form.p_artistemail.focus();
-							return false;
+							window.localStorage.setItem("artistivity_cookie", data.cookie);
+							//console.log(data);
+							window.location.href = "verification.html?artistemail="+form.P_artistemail.value;
+							return true;
 						}
 					}
 				});
@@ -98,6 +101,7 @@
 
 	}
 
+	/*
 	//Checking Local Storage
 	function checkLocal() {
 		if (window.localStorage["artistivity_cookie"] != undefined) {
@@ -134,7 +138,7 @@
 
 		} else {
 		}
-	}
+	}*/
 </script>
 </head>
 

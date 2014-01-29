@@ -80,9 +80,11 @@ $(document).ready(function() {
 /**************************************************/
 			   // Profile form submissions //
 /**************************************************/	
-
 	
-	$("#personalFormSubmit").click( function () {
+// End jQuery
+});
+
+$("#personalFormSubmit").click( function () {
 		//window.scrollTo(0,0);
 		$('#personalStatus').fadeIn(100).html("Saving your information...");    
 		//$('#php_profile_userprofile').fadeIn(100).html("<img src='http://artistivity.com/images/loader.gif' style='float:left' />");
@@ -183,7 +185,3 @@ $(document).ready(function() {
 		$(".morebio").show();
 		$(this).hide();
 	});
-
-	
-// End jQuery
-});

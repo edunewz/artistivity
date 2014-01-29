@@ -550,6 +550,17 @@ input, textarea, select{
 
 .error {font-size: 13px;}
 
+.morebio{
+	display: none;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+}
+
+
 @media only screen and (max-width : 360px) {
 
 	.pad2 {padding: 4.5%;}

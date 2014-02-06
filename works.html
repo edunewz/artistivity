@@ -21,8 +21,8 @@
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="sidebar">
         <div class="page-sidebar-scroll">
             <a id="dashBoard" href="dashboardFrame.html"><i class="dashBoard-ico"></i><span>Dashboard</span></a>
-            <a id="myProfile" href="my_profile.html"><i class="myProfile-ico"></i><span>My Profile</span></a>
-            <a id="bookings" href="booking_history.html" class="active"><i class="bookings-ico"></i><span>Bookings</span></a>
+            <a id="myProfile" href="my_profile.html" class="active"><i class="myProfile-ico"></i><span>My Profile</span></a>
+            <a id="bookings" href="booking_history.html"><i class="bookings-ico"></i><span>Bookings</span></a>
             <a id="works" href="works.html"><i class="works-ico"></i><span>Works</span></a>
             <a id="calender" href="dashboardFrame.html"><i class="calender-ico"></i><span>Calendar</span></a>
         </div>
@@ -35,22 +35,24 @@
     	<div class="page-header">
         	<a href="dashboardFrame.html" class="back"></a>
             <p class="head">
-                Booking History
+                My Profile
             </p>
             <a href="javascript:void(0)" class="deploy-sidebar"></a>
         </div> 
         <!--End header-->
+        <div style="clear:both"></div>
+		
 		<div id='myframe'></div>
-
-		</div>
-    <!-- ================= End Content =============-->
+		
+        
     
 <!-- End All Elements Div-->
+
 </div>
 </body>
 <script>
 	
-	var qs = (function(a) {
+	/*var qs = (function(a) {
 	    if (a == "") return {};
 	    var b = {};
 	    for (var i = 0; i < a.length; ++i)
@@ -60,10 +62,10 @@
 	        b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
 	    }
 	    return b;
-	})(window.location.search.substr(1).split('&'));
+	})(window.location.search.substr(1).split('&'));*/
 	
 	$(document).ready(function(){
-        $('#myframe').load('http://artistivity.com/new/mobile/newbookingHistory.php?artistid='+qs['artistid']);
+        $('#myframe').load('http://artistivity.com/new/mobile/works.php');
     });
 	
 	

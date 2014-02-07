@@ -566,6 +566,71 @@ select {
     appearance:         none;
 }
 
+#uploadImage, #facebookImage{
+	width: 47%;
+	float:left;
+}
+
+#facebookImage{
+	float:right;
+	color:#fff;
+	background: #4d68a2;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#4d68a2), to(#3c5a98));
+	background: -webkit-linear-gradient(#4d68a2, #3c5a98);
+	background: -moz-linear-gradient(#4d68a2, #3c5a98);
+	background: -ms-linear-gradient(#4d68a2, #3c5a98);
+	background: -o-linear-gradient(#4d68a2, #3c5a98);
+	background: linear-gradient(#4d68a2, #3c5a98);
+}
+
+.top-action{
+	font-family:lato; 
+	padding: 0.5em 5% !important;
+	text-align: center;
+	width:100%;
+}
+
+#soundcloudAudio{
+	color:#fff;
+	background: #f88c10;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#f88c10), to(#f94d0f));
+	background: -webkit-linear-gradient(#f88c10, #f94d0f);
+	background: -moz-linear-gradient(#f88c10, #f94d0f);
+	background: -ms-linear-gradient(#f88c10, #f94d0f);
+	background: -o-linear-gradient(#f88c10, #f94d0f);
+	background: linear-gradient(#f88c10, #f94d0f);
+}
+
+#youtubeVideo{
+	color:#fff;
+	background: #e42c28;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#e42c28), to(#cb2724));
+	background: -webkit-linear-gradient(#e42c28, #cb2724);
+	background: -moz-linear-gradient(#e42c28, #cb2724);
+	background: -ms-linear-gradient(#e42c28, #cb2724);
+	background: -o-linear-gradient(#e42c28, #cb2724);
+	background: linear-gradient(#e42c28, #cb2724);
+}
+
+.rambla{
+	font-family: 'Rambla', sans-serif;
+}
+
+.imageSmall{
+	width:48%; 
+	height:150px;
+	background-size:cover; 
+	margin-bottom:10px;
+	background: #000000;
+}
+
+.closeButton{
+	color:#FFFFFF; 
+	float:right; 
+	padding:0 6px 2px 6px; 
+	background:#8c1721; ;	
+}
+
 
 @media only screen and (max-width : 360px) {
 

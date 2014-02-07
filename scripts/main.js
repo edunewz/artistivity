@@ -186,3 +186,37 @@ $(document).ready(function() {
 	
 // End jQuery
 });
+
+function deleteEntity(type,id) 
+	{
+		todelete = "."+type+id;
+		//$(todelete).html("");
+		//$(todelete).css('background-image','url(img/1.jpg)');
+		
+		$.post('http://artistivity.com/new/mobile/deleteEntity?type='+type+"&id="+id,
+			function(data){
+				console.log(data);
+				if (data.toLowerCase().indexOf("success") >= 0)
+				{
+					if(type == "image")
+					{
+						$(todelete).html("Image Deleted");
+					}
+					else if(type == "video" || type == "audio")
+					{
+						$(todelete).remove();
+						//alert("coming here");
+					}
+					else
+					{
+						alert("locha");
+					}
+				}
+				else
+				{
+					$(todelete).html("Error deleting.")
+				}
+			}
+		);
+	    return false;
+	}

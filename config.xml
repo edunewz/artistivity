@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-<<<<<<< HEAD
         id          = "com.app.artistivity"
         versionCode = "10" 
         version     = "1.0.0" >
-=======
-        id          = "com.phonegap.example"
-        versionCode = "10" 
-        version     = "1.2.0" >
->>>>>>> d00a392bed3b60c2d14fa50ec27c6b00fdaad6b5
 
     <!-- versionCode is optional and Android only -->
 
     <name>artistivity</name>
 
     <description>
-<<<<<<< HEAD
         Book an artist online based on talents and genres.
     </description>
 
@@ -29,13 +22,4 @@
 	    <param name="APP_NAME" value="Arti­s­t­i­vity" />  
 	</gap:plugin>
 
-=======
-        Search and book artists by their talent online.
-    </description>
-
-    <author href="http://www.artistivity.com" email="support@artistivity.com">
-        Anuj Kothari
-    </author>
-
->>>>>>> d00a392bed3b60c2d14fa50ec27c6b00fdaad6b5
 </widget>

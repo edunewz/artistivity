@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--Declare page as mobile friendly -->
+<meta name="viewport"
+	content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<!-- Declare page as iDevice WebApp friendly -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>Artistivity</title>
+<link href="stylesheets/pure-min.css" rel="stylesheet" type="text/css">
+<link href="stylesheets/style.css" rel="stylesheet" type="text/css">
+<div id="results"></div>
+				
+<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" src="scripts/main.js"></script>
+<script>
+	//controller();
+
+	function checkLogin(form) {
+	
+		var checkValue = true;
+		
+		if (form.P_artistpassword.value == "") {
+			document.getElementById('validpassword').style.display = 'block';
+			document.getElementById('incorrect').style.display = 'none';
+			form.P_artistpassword.focus();
+			checkValue = false;
+		}
+		
+		if (form.P_artistphone.value == "" || isNaN(form.P_artistphone.value)) {
+			document.getElementById('validphone').style.display = 'block';
+			document.getElementById('incorrect').style.display = 'none';
+			form.P_artistphone.focus();
+			checkValue = false;
+		}
+		
+		var pattern = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+		if (!pattern.test(form.P_artistemail.value)) {
+			document.getElementById('validemail').style.display = 'block';
+			document.getElementById('incorrect').style.display = 'none';
+			form.P_artistemail.focus();
+			checkValue = false;
+		}
+		if (form.P_artistname.value == "") {
+			document.getElementById('validname').style.display = 'block';
+			document.getElementById('incorrect').style.display = 'none';
+			form.P_artistname.focus();
+			checkValue = false;
+		}
+		
+		
+		if (checkValue == false)
+		{
+			return false;
+		}
+		
+		var url = "http://artistivity.com/new/mobile/registration.php";
+		
+		$.ajax({
+					type : 'POST',
+					async: false,
+					url : url,
+					contentType : "application/json",
+					dataType : 'jsonp',
+					crossDomain : true,
+					data : {
+						register : form.register.value,
+						artistname : form.P_artistname.value,
+						artistemail : form.P_artistemail.value,
+						artistphone : form.P_artistphone.value,
+						artistpassword : form.P_artistpassword.value
+					},
+					beforeSend : function(xhr) {
+						//show your image loader here
+
+					},
+					success : function(data){
+						if (data.success != "true") {
+							if(data.success == "exists")
+							{
+								document.getElementById('incorrect').innerHTML = "Given email already exists.";
+							}
+							document.getElementById('incorrect').style.display = 'block';
+							return false;
+							
+						} else {
+							//document.write(data.success);
+							//console.log(data);
+							window.location.href = "verification.html?artistemail="+form.P_artistemail.value;
+							return true;
+						}
+					}
+				});
+		
+		
+		return false;
+
+	}
+
+	/*
+	//Checking Local Storage
+	function checkLocal() {
+		if (window.localStorage["artistivity_cookie"] != undefined) {
+			cookie = window.localStorage["artistivity_cookie"];
+			return true;
+		}
+		return false;
+	}
+
+	function controller() {
+		if (checkLocal()) {
+
+			var url = "http://artistivity.com/new/mobile/startSession.php"; // you'll want to change
+			$.ajax({
+				type : 'GET',
+				url : url,
+				contentType : "application/json",
+				dataType : 'jsonp',
+				crossDomain : true,
+				data : {
+					scookie : cookie
+				},
+				beforeSend : function(xhr) {
+				},
+				
+				success : function(res) {
+					if (res.value) {
+						window.location("index.html");
+					} else {
+						alert("error");
+					}
+				}
+			});
+
+		} else {
+		}
+	}*/
+</script>
+</head>
+
+<body class="loginBg01">
+
+	<!-- ================= Start login Form ============= -->
+	<div id="loginFormWrapper">
+		<div class="outerWrapper">
+			<div class="innerWrapper">
+				<img src="images/artistivity-big-logo.png" width="100%" alt="">
+				<div class="loginBox clear-fix">
+					<div class="arrow"></div>
+					<form action="dashboardFrame.html" name="login" method="post" id="" onsubmit="return checkLogin(this);">
+						<div class="error" id="incorrect" style="display: none; color: red;">Please try again.</div>
+						
+						<input type="hidden" name="register" value="true"/>
+						
+						<input name="P_artistname" type="name" placeholder="Full Name" class="blackInput">
+						<div class="error" id="validname" style="display: none; color: red;">Please enter valid name.</div>
+						
+						<input name="P_artistemail" type="email" placeholder="Email" class="blackInput mTop15">
+						<div class="error" id="validemail" style="display: none; color: red;">Please enter valid Email-ID.</div>
+						
+						<input name="P_artistphone" type="number" placeholder="Phone Number" class="blackInput mTop15">
+						<div class="error" id="validphone" style="display: none; color: red;">Please enter valid phone number.</div>
+						
+						<input name="P_artistpassword" type="password" placeholder="Password" class="blackInput mTop15">
+						<div class="error" id="validpassword" style="display: none; color: red;">Please enter a password.</div>
+						
+						<button type="submit" name="" value="" class="redBtn mTop15">SIGN UP</button>
+						
+					</form>
+				</div>
+				<div id="fbBtn">
+					<a href="#"><img src="images/fb-btn.png" alt=""></a>
+				</div>
+
+				<div class="baseLink">
+					Already registered? <a href="index.html" class="white-link">Sign In</a>
+				</div>
+				<div class="clear-fix"></div>
+			</div>
+		</div>
+
+	</div>
+	<!-- ================= End login form ============= -->
+
+</body>
+</html>

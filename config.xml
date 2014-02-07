@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.app.artistivity"
+        versionCode = "10" 
+        version     = "1.0.0" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>artistivity</name>
+
+    <description>
+        Book an artist online based on talents and genres.
+    </description>
+
+    <author href="http://artistivity.com" email="support@artistivity.com">
+        Hardeep Shoker 
+    </author>
+
+	<gap:plugin name="com.phonegap.plugins.facebookconnect">
+	    <param name="APP_ID" value="1441815179374476" />
+	    <param name="APP_NAME" value="Arti­s­t­i­vity" />
+	</gap:plugin>
+
+</widget>

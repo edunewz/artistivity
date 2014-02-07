@@ -58,15 +58,11 @@ $(document).ready(function() {
 	})
 	
 	$("#personalFormSubmit").live('click', function () {
-		//window.scrollTo(0,0);
 		$('#personalStatus').fadeIn(100).html("Saving your information...");    
-		//$('#php_profile_userprofile').fadeIn(100).html("<img src='http://artistivity.com/images/loader.gif' style='float:left' />");
-		//alert("coming here");
 		$.post('http://artistivity.com/new/mobile/updatePersonal.php',
 			$("#personalForm").serialize(),
 			function(data){
-			$("#php_profile_userprofile").html(data)
-				//console.log(data);
+				console.log(data);
 				if (data.toLowerCase().indexOf("success") >= 0)
 				{
 					$('#personalStatus').fadeIn(100).html("Information saved");    

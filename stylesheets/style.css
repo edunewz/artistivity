@@ -569,6 +569,8 @@ select {
 #uploadImage, #facebookImage{
 	width: 47%;
 	float:left;
+	padding:7px 3% !important;
+	text-align:center;
 }
 
 #facebookImage{

@@ -16,11 +16,6 @@
     <author href="http://artistivity.com" email="support@artistivity.com">
         Hardeep Shoker 
     </author>
-
-	<gap:plugin name="com.phonegap.plugins.facebookconnect">
-	    <param name="APP_ID" value="1441815179374476" />
-	    <param name="APP_NAME" value="Arti­s­t­i­vity" />  
-	</gap:plugin>
 	
 	<plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
 	

@@ -21,5 +21,7 @@
 	    <param name="APP_ID" value="1441815179374476" />
 	    <param name="APP_NAME" value="Arti­s­t­i­vity" />  
 	</gap:plugin>
-
+	
+	<plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+	
 </widget>

@@ -216,3 +216,24 @@ function deleteEntity(type,id)
 		);
 	    return false;
 	}
+	
+	var iabRef = null;
+
+	   function loadGoogle(){
+	   		 ref = window.open(encodeURI('http://artistivity.com/new/mobile/googleIntegration.php'),'_self','location=no'); //encode is needed if you want to send a variable with your link if not you can use ref = window.open(url,'_blank','location=no');
+	         ref.addEventListener('loadstop', LoadStop);
+	         ref.addEventListener('exit', Close);
+	    }
+	    
+	    function LoadStop(event) {
+	    	alert("coming here");
+	         if(event.url == "http://www.artistivity.com/new/mobile/emptypage.html"){
+	            // alert("fun load stop runs");
+	             ref.close();
+	         }    
+	    }
+	function Close(event) {
+	alert("coming here");
+	         ref.removeEventListener('loadstop', LoadStop);
+	         ref.removeEventListener('exit', Close);
+	    }

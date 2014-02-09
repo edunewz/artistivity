@@ -216,4 +216,36 @@ function deleteEntity(type,id)
 		);
 	    return false;
 	}
-	
+	document.addEventListener("deviceready", onDeviceReady, false);
+	// Global InAppBrowser reference
+    var ref= null;
+
+    function iabLoadStart(event) {
+        alert(event.type + ' - ' + event.url);
+    }
+
+    function iabLoadStop(event) {
+        alert(event.type + ' - ' + event.url);
+    }
+
+    function iabLoadError(event) {
+        alert(event.type + ' - ' + event.message);
+    }
+
+    function iabClose(event) {
+         alert(event.type);
+         ref.removeEventListener('loadstart', iabLoadStart);
+         ref.removeEventListener('loadstop', iabLoadStop);
+         ref.removeEventListener('loaderror', iabLoadError);
+         ref.removeEventListener('exit', iabClose);
+    }
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+         ref= window.open('http://apache.org', '_blank', 'location=yes');
+         ref.addEventListener('loadstart', iabLoadStart);
+         ref.addEventListener('loadstop', iabLoadStop);
+         ref.addEventListener('loaderror', iabLoadError);
+         ref.addEventListener('exit', iabClose);
+    }
